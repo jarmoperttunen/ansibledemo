@@ -1,0 +1,17 @@
+---
+- name: Install nginx
+  hosts: web
+  become: true
+  tasks:
+  - name: Install nginx package
+    package:
+      name: nginx
+      state: present
+  - name: Insert index webpage from template
+    template:
+      src: index.html
+      dest: /usr/share/nginx/html/index.html
+  - name: Start nginx service
+    service:
+      name: nginx
+      state: started
