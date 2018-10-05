@@ -1,7 +1,9 @@
 ---
-- name: Install webserver
+- name: Install webservers
   hosts: web
   become: true
   roles:
   - geerlingguy.mysql
   - nginx
+  - php-fpm
+  - wordpress
